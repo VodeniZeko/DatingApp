@@ -41,6 +41,13 @@ To use this project, follow the instructions provided in each section of the cod
 8. Click on a table name to view its contents. The table data will be displayed in the editor pane.
 9. You can now browse and interact with the table data directly within VS Code.
 
+## Version Information
+
+- Angular CLI: 17.3.7
+- Node: 20.0.0
+- .NET: 8.0.4
+- Microsoft.EntityFrameworkCore.Sqlite: 8.0.4
+- Microsoft.EntityFrameworkCore.Design: 8.0.4
 
 ## Contribution
 
