@@ -1,7 +1,7 @@
 ﻿using API.Data;
 using API.Entities;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -17,18 +17,18 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers()
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetAllUsers()
     {
-        var users = _context.Users.ToList();
+        var users = await _context.Users.ToListAsync();
 
         try
         {
-        if(users == null || !users.Any())
-        {
-            throw new Exception("No users found.");
-        }
+            if (users == null || !users.Any())
+            {
+                throw new Exception("No users found.");
+            }
 
-        return users;
+            return users;
         }
         catch (Exception ex)
         {
@@ -38,9 +38,9 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult<AppUser> GetSingleUser(int id)
+    public async Task<ActionResult<AppUser>> GetSingleUser(int id)
     {
-        var user = _context.Users.Find(id);
+        var user = await _context.Users.FindAsync(id);
 
         try
         {
