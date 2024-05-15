@@ -43,11 +43,14 @@ To use this project, follow the instructions provided in each section of the cod
 
 ## Version Information
 
-- Angular CLI: 17.3.7
-- Node: 20.0.0
-- .NET: 8.0.4
-- Microsoft.EntityFrameworkCore.Sqlite: 8.0.4
-- Microsoft.EntityFrameworkCore.Design: 8.0.4
+- **Backend:**
+  - .NET: 8.0.4
+  - Microsoft.EntityFrameworkCore.Sqlite: 8.0.4
+  - Microsoft.EntityFrameworkCore.Design: 8.0.4
+
+- **Frontend:**
+  - Angular CLI: 17.3.7
+  - Node: 20.0.0
 
 ## Contribution
 
