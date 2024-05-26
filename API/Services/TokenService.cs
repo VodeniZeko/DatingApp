@@ -1,11 +1,12 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
-using API.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
-namespace API;
+using API.Entities;
+using API.Interfaces;
+
+namespace API.Services;
 
 public class TokenService : ITokenService // Declaring the TokenService class which implements the ITokenService interface
 {
