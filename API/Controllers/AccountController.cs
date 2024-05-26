@@ -10,14 +10,16 @@ namespace API;
 public class AccountController : BaseApiController
 {
     private readonly DataContext _context;
+    private readonly ITokenService _tokenService;
 
-    public AccountController(DataContext context)
+    public AccountController(DataContext context, ITokenService tokenService)
     {
         _context = context;
+        _tokenService = tokenService;
 
     }
     [HttpPost("register")] //POST: api/account/register
-    public async Task<ActionResult<AppUser>> Register(RegisterDto registerDto)
+    public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
 
         if (await UserExist(registerDto.UserName)) return BadRequest("Username is taken");
@@ -34,11 +36,15 @@ public class AccountController : BaseApiController
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        return user;
+        return new UserDto
+        {
+            Username = user.UserName,
+            Token = _tokenService.CreateToken(user)
+        };
     }
 
     [HttpPost("login")] //POST: api/account/login
-    public async Task<ActionResult<AppUser>> Login(LoginDto loginDto)
+    public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
         var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.UserName);
 
@@ -53,7 +59,11 @@ public class AccountController : BaseApiController
             if (computeHash[i] != user.PassHash[i]) return Unauthorized("invalid password");
         }
 
-        return user;
+        return new UserDto
+        {
+            Username = user.UserName,
+            Token = _tokenService.CreateToken(user)
+        };
     }
 
 
