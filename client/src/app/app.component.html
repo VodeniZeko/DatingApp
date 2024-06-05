@@ -1,12 +1,8 @@
+<nav-component></nav-component>
 <h1>{{ title }}</h1>
 
-<div class="card flex justify-content-center">
-  <p-listbox
-    [options]="users"
-    [(ngModel)]="selectedUser"
-    optionLabel="userName"
-    [filter]="true"
-    [style]="{ width: '15rem' }"
-    [listStyle]="{ 'max-height': '220px' }"
-  />
+<div>
+  <ul>
+    <li *ngFor="let user of users">{{ user }}</li>
+  </ul>
 </div>
