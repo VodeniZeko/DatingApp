@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
-import { AccountService } from '../_services/account.service';
+import { Component } from '@angular/core';
+import { AccountService } from '../../_services/account.service';
 
 @Component({
-  selector: 'nav-component',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavComponent implements OnInit {
+export class NavbarComponent {
   model: any = {};
   loggedIn!: boolean;
 
