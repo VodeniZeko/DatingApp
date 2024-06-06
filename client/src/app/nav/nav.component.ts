@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'nav-component',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css',
+  styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
   model: any = {};
@@ -26,5 +23,9 @@ export class NavComponent implements OnInit {
       },
       error: (err) => console.log('err', err),
     });
+  }
+
+  logout() {
+    this.loggedIn = false;
   }
 }
