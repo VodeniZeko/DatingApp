@@ -12,7 +12,6 @@ interface User {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'Angular added!!';
   users!: User[];
   selectedUser!: User;
 
