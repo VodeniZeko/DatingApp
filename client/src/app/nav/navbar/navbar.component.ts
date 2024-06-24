@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AccountService } from '../../_services/account.service';
 
 @Component({
@@ -7,10 +7,8 @@ import { AccountService } from '../../_services/account.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  accountService = inject(AccountService);
   model: any = {};
-  loggedIn!: boolean;
-
-  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
@@ -18,13 +16,12 @@ export class NavbarComponent {
     this.accountService.login(this.model).subscribe({
       next: (res) => {
         console.log('res', res);
-        this.loggedIn = true;
       },
       error: (err) => console.log('err', err),
     });
   }
 
   logout() {
-    this.loggedIn = false;
+    this.accountService.logout();
   }
 }

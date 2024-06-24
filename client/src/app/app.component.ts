@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AccountService } from './_services/account.service';
 
 interface User {
   id: number;
@@ -12,16 +13,26 @@ interface User {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  http = inject(HttpClient);
+  private accountService = inject(AccountService);
   users!: User[];
   selectedUser!: User;
 
-  constructor(private http: HttpClient) {}
-
   ngOnInit(): void {
-    this.makeApiCall();
+    this.getUsers();
+    this.setCurrUser();
   }
 
-  makeApiCall(): void {
+  setCurrUser() {
+    const userString = localStorage.getItem('user');
+
+    if (!userString) return;
+
+    const user = JSON.parse(userString);
+    this.accountService.currUser.set(user);
+  }
+
+  getUsers(): void {
     this.http.get('https://localhost:5001/api/users').subscribe({
       next: (data: any) => (this.users = data as User[]),
       error: (err) => console.log(err),
