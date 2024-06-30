@@ -14,15 +14,6 @@
     <label for="username">Username</label>
   </div>
 
-  <div class="mb-3">
-    <label>Favorite User</label>
-    <select class="form-select">
-      <option *ngFor="let user of users" [value]="user.userName">
-        {{ user.userName }}
-      </option>
-    </select>
-  </div>
-
   <div class="mb-3 form-floating">
     <input
       type="password"
