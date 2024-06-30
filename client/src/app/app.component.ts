@@ -1,11 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { AccountService } from './_services/account.service';
-
-interface User {
-  id: number;
-  userName: string;
-}
+import { User } from './_models/user';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +11,8 @@ interface User {
 export class AppComponent implements OnInit {
   http = inject(HttpClient);
   private accountService = inject(AccountService);
-  users!: User[];
-  selectedUser!: User;
 
   ngOnInit(): void {
-    this.getUsers();
     this.setCurrUser();
   }
 
@@ -28,15 +21,7 @@ export class AppComponent implements OnInit {
 
     if (!userString) return;
 
-    const user = JSON.parse(userString);
-    this.accountService.currUser.set(user);
-  }
-
-  getUsers(): void {
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: (data: any) => (this.users = data as User[]),
-      error: (err) => console.log(err),
-      complete: () => console.log('req has completed'),
-    });
+    const user: User = JSON.parse(userString);
+    this.accountService.setCurrUser(user);
   }
 }

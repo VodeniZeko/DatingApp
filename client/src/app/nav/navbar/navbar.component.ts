@@ -1,12 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AccountService } from '../../_services/account.service';
+import { Observable, of } from 'rxjs';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   accountService = inject(AccountService);
   model: any = {};
 
