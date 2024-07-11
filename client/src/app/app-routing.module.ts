@@ -7,6 +7,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { authGuard } from './_guards/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [authGuard],
     children: [
+      { path: 'profile', component: ProfileComponent },
       { path: 'members', component: MemberListComponent },
       { path: 'members/:id', component: MemberDetailComponent },
       { path: 'lists', component: ListsComponent },
