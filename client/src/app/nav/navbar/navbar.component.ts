@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AccountService } from '../../_services/account.service';
-import { Observable, of } from 'rxjs';
-import { User } from 'src/app/_models/user';
+import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -9,21 +10,23 @@ import { User } from 'src/app/_models/user';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  private toastr = inject(ToastrService);
+  private router = inject(Router);
   accountService = inject(AccountService);
+
   model: any = {};
 
   ngOnInit(): void {}
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: (res) => {
-        console.log('res', res);
-      },
-      error: (err) => console.log('err', err),
+      next: () => this.router.navigateByUrl('/members'),
+      error: (err) => this.toastr.error(err.error),
     });
   }
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 }

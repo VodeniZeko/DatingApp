@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #1a1a1a;
+  color: #ccc;
+  font-family: Arial, sans-serif;
+}
+
+.nav-link-active {
+  background-color: #4d4dff;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.nav-link-active:hover,
+.nav-link-active:focus {
+  background-color: #3333ff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  background-color: #333;
+  color: #ccc;
+}
+
+.dropdown-item {
+  color: #ccc;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #555;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn {
+  background-color: #4d4dff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #3333ff;
+  color: #fff;
+  text-decoration: none;
+}

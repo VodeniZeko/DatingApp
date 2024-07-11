@@ -1,24 +1,42 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark">
   <div class="container">
-    <a class="navbar-brand">Dating App</a>
+    <a class="navbar-brand" routerLink="/">Dating App</a>
 
-    <ul
-      *ngIf="accountService.currUser$ | async"
-      class="navbar-nav me-auto mb-2 mb-lg-0"
-    >
-      <li class="nav-item">
-        <a class="nav-link">Matches</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">List</a>
-      </li>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ng-container *ngIf="accountService.currUser$ | async">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/members"
+            routerLinkActive="nav-link-active"
+            >Matches</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/lists"
+            routerLinkActive="nav-link-active"
+            >List</a
+          >
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link">Messages</a>
-      </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/messages"
+            routerLinkActive="nav-link-active"
+            >Messages</a
+          >
+        </li>
+      </ng-container>
     </ul>
 
-    <div *ngIf="accountService.currUser$ | async" class="btn-group" dropdown>
+    <div
+      *ngIf="accountService.currUser$ | async as user"
+      class="btn-group"
+      dropdown
+    >
       <button
         id="button-basic"
         dropdownToggle
@@ -26,7 +44,7 @@
         class="btn btn-primary dropdown-toggle"
         aria-controls="dropdown-basic"
       >
-        Welcome {{ model.username }} <span class="caret"></span>
+        Welcome {{ user.username | titlecase }} <span class="caret"></span>
       </button>
       <ul
         id="dropdown-basic"
