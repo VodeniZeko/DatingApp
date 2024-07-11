@@ -8,6 +8,7 @@ using API.Data;
 using API.Dto;
 using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
