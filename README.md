@@ -27,10 +27,12 @@ To use this project, follow the instructions provided in each section of the cod
 ### Viewing SQLite Database Tables in Visual Studio Code
 
 #### Prerequisites
+
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [SQLite extension](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) installed in VS Code
 
 #### Instructions
+
 1. Open the project folder in Visual Studio Code.
 2. Ensure that your SQLite database file (with the `.sqlite` or `.db` extension) is located within the project directory.
 3. Install the SQLite extension if you haven't already. You can find it in the VS Code marketplace or by clicking [here](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite).
@@ -44,6 +46,7 @@ To use this project, follow the instructions provided in each section of the cod
 ## Version Information
 
 - **Backend:**
+
   - .NET: 8.0.4
   - Microsoft.EntityFrameworkCore.Sqlite: 8.0.4
   - Microsoft.EntityFrameworkCore.Design: 8.0.4

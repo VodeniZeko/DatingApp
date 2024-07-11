@@ -16,6 +16,7 @@ import { MessagesComponent } from './messages/messages.component';
 
 import { SharedModule } from './_modules/shared.module';
 import { ProfileComponent } from './profile/profile.component';
+import { TestErrorComponent } from './errors/test-error/test-error.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
     ListsComponent,
     MessagesComponent,
     ProfileComponent,
+    TestErrorComponent,
   ],
   imports: [
     BrowserModule,
